@@ -1,0 +1,305 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #1e1e2e;
+  color: #e4e4ef;
+}
+
+#app { display: flex; min-height: 100vh; }
+
+/* Login screen */
+#loginScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.login-card {
+  background: #181825;
+  border: 1px solid #313244;
+  border-radius: 14px;
+  padding: 36px;
+  width: 320px;
+  text-align: center;
+}
+.login-card h1 { color: #f5c2e7; margin: 0 0 4px; }
+.login-card p { color: #9399b2; margin: 0 0 20px; font-size: 14px; }
+.login-card input {
+  width: 100%;
+  padding: 11px;
+  margin-bottom: 10px;
+  background: #11111b;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  color: #cdd6f4;
+  font-size: 14px;
+}
+.login-card input:focus { outline: 2px solid #89dceb; }
+.login-buttons { display: flex; gap: 10px; margin-top: 6px; }
+.login-buttons button { flex: 1; }
+#loginBtn { background: #a6e3a1; color: #11111b; font-weight: bold; }
+#loginBtn:hover { background: #94d68f; }
+#loginMsg { margin-top: 12px; font-size: 13px; color: #f38ba8; min-height: 18px; }
+
+/* User bar */
+#userBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+#userLabel { color: #a6e3a1; font-weight: bold; }
+#logoutBtn { padding: 4px 10px; font-size: 12px; }
+
+/* Sidebar */
+#sidebar {
+  width: 230px;
+  background: #181825;
+  padding: 20px;
+  border-right: 1px solid #313244;
+}
+#sidebar h1 { font-size: 20px; margin: 0 0 20px; color: #f5c2e7; }
+/* Learn / Build mode switch */
+#modeTabs { display: flex; gap: 6px; margin-bottom: 18px; }
+.mode-tab { flex: 1; padding: 9px; font-size: 14px; background: #232334; }
+.mode-tab.active { background: #89dceb; color: #11111b; font-weight: bold; }
+.sidebar-note { font-size: 13px; color: #9399b2; margin: 0 0 8px; }
+#newProjBtn { width: 100%; margin-top: 10px; background: #a6e3a1; color: #11111b; font-weight: bold; }
+#projListSidebar { list-style: none; padding: 0; margin: 0; }
+#projListSidebar li {
+  padding: 8px 10px; border-radius: 6px; cursor: pointer; font-size: 14px;
+  margin-bottom: 4px; background: #232334;
+  display: flex; justify-content: space-between; align-items: center;
+}
+#projListSidebar li:hover { background: #313244; }
+#projListSidebar li.active { background: #45475a; color: #89dceb; }
+#projListSidebar .del { color: #f38ba8; font-size: 12px; padding: 0 4px; background: none; }
+
+/* Builder view */
+#builderBar { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
+#projName {
+  flex: 1; padding: 9px 11px; background: #11111b; border: 1px solid #45475a;
+  border-radius: 8px; color: #cdd6f4; font-size: 14px;
+}
+#saveProjBtn { background: #a6e3a1; color: #11111b; font-weight: bold; }
+#saveMsg { font-size: 13px; color: #a6e3a1; }
+
+#editorTabs { display: flex; gap: 4px; margin-bottom: 0; }
+.ed-tab {
+  font-size: 13px; padding: 8px 18px; background: #232334;
+  border-radius: 8px 8px 0 0;
+}
+.ed-tab.active { background: #11111b; color: #f9e2af; font-weight: bold; }
+
+#builderEditor {
+  width: 100%; min-height: 240px;
+  background: #11111b; color: #cdd6f4;
+  border: 1px solid #45475a; border-radius: 0 8px 8px 8px;
+  padding: 14px; font-family: "SF Mono", Monaco, monospace;
+  font-size: 14px; line-height: 1.5; resize: vertical;
+}
+#builderEditor:focus { outline: 2px solid #89dceb; }
+#builderButtons { margin: 12px 0; }
+#runProjBtn { background: #a6e3a1; color: #11111b; font-weight: bold; }
+#builderPreviewLabel { font-size: 13px; color: #9399b2; margin-top: 8px; }
+#builderPreview {
+  width: 100%; height: 320px; background: #fff;
+  border: 1px solid #45475a; border-radius: 8px; margin-top: 4px;
+}
+
+/* Tutorial (MakeCode-style two-column) */
+#tutStepList { list-style: none; padding: 0; margin: 0; }
+#tutStepList li {
+  padding: 8px 10px; border-radius: 6px; cursor: pointer; font-size: 13px;
+  margin-bottom: 4px; background: #232334; color: #cdd6f4;
+}
+#tutStepList li:hover { background: #313244; }
+#tutStepList li.active { background: #89dceb; color: #11111b; font-weight: bold; }
+#tutStepList li.done::before { content: "✓ "; color: #a6e3a1; }
+
+#tutSplit { display: flex; gap: 20px; align-items: flex-start; }
+#tutLeft { flex: 1; min-width: 280px; }
+#tutRight { flex: 1.2; min-width: 320px; }
+#tutProgress {
+  display: inline-block; background: #45475a; color: #89dceb;
+  font-size: 12px; font-weight: bold; padding: 3px 10px; border-radius: 12px;
+}
+#tutTitle { color: #f5c2e7; margin: 10px 0; }
+#tutInstruction { line-height: 1.7; font-size: 15px; }
+#tutInstruction code { background: #313244; padding: 2px 6px; border-radius: 4px; color: #f9e2af; }
+#tutInstruction b { color: #f9e2af; }
+#tutCodeLabel, .tut-editor-label { font-size: 13px; color: #9399b2; margin: 14px 0 6px; }
+#tutCode {
+  background: #11111b; color: #a6e3a1; padding: 12px; border-radius: 8px;
+  font-family: "SF Mono", Monaco, monospace; font-size: 12.5px; line-height: 1.5;
+  max-height: 220px; overflow: auto; white-space: pre-wrap;
+  border-left: 3px solid #a6e3a1;
+}
+#tutInsert { background: #f9e2af; color: #11111b; font-weight: bold; margin-top: 10px; }
+#tutNav { display: flex; justify-content: space-between; margin-top: 16px; }
+#tutEditor {
+  width: 100%; min-height: 240px; background: #11111b; color: #cdd6f4;
+  border: 1px solid #45475a; border-radius: 8px; padding: 12px;
+  font-family: "SF Mono", Monaco, monospace; font-size: 13px; line-height: 1.5; resize: vertical;
+}
+#tutEditor:focus { outline: 2px solid #89dceb; }
+#tutRun { background: #a6e3a1; color: #11111b; font-weight: bold; margin: 10px 0; font-size: 15px; padding: 10px 20px; }
+#tutPreview {
+  width: 100%; height: 360px; background: #fff;
+  border: 1px solid #45475a; border-radius: 8px;
+}
+
+#courseTabs { display: flex; flex-direction: column; gap: 3px; margin-bottom: 16px; }
+
+.group-header {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #6c7086;
+  font-weight: bold;
+  margin: 14px 0 4px;
+  padding-left: 4px;
+}
+.group-header:first-child { margin-top: 0; }
+
+.course-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: left;
+  font-size: 13px;
+  padding: 7px 10px;
+  background: #232334;
+  width: 100%;
+}
+.course-btn.active { background: #45475a; color: #f5c2e7; font-weight: bold; }
+.course-btn.complete .badge { color: #a6e3a1; }
+
+.badge {
+  font-size: 11px;
+  color: #9399b2;
+  background: #11111b;
+  border-radius: 10px;
+  padding: 1px 7px;
+  flex-shrink: 0;
+}
+
+#lessonList { list-style: none; padding: 0; margin: 0; }
+#lessonList li {
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+#lessonList li:hover { background: #313244; }
+#lessonList li.active { background: #45475a; color: #89dceb; font-weight: bold; }
+#lessonList li.done::before { content: "✓ "; color: #a6e3a1; }
+#progress { margin-top: 20px; font-size: 13px; color: #9399b2; }
+
+/* Content */
+#content { flex: 1; padding: 30px 40px; max-width: 1040px; }
+#lessonTitle { color: #89dceb; }
+#lessonBody { line-height: 1.6; }
+#lessonBody code {
+  background: #313244;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #f9e2af;
+  font-family: "SF Mono", Monaco, monospace;
+}
+#lessonBody pre {
+  background: #11111b;
+  padding: 14px;
+  border-radius: 8px;
+  overflow-x: auto;
+  border-left: 3px solid #89dceb;
+}
+#lessonBody pre code { background: none; color: #cdd6f4; padding: 0; }
+
+/* Exercise */
+#exerciseBox {
+  background: #181825;
+  border: 1px solid #313244;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 24px;
+}
+#exerciseBox h3 { margin-top: 0; color: #f5c2e7; }
+#codeboard {
+  width: 100%;
+  min-height: 140px;
+  background: #11111b;
+  color: #cdd6f4;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  padding: 14px;
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+}
+#codeboard:focus { outline: 2px solid #89dceb; }
+
+#buttons { margin: 12px 0; display: flex; gap: 10px; }
+button {
+  background: #45475a;
+  color: #e4e4ef;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+button:hover { background: #585b70; }
+#runBtn { background: #a6e3a1; color: #11111b; font-weight: bold; }
+#runBtn:hover { background: #94d68f; }
+
+#outputLabel { font-size: 13px; color: #9399b2; margin-top: 8px; }
+#output {
+  background: #11111b;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 40px;
+  margin: 4px 0;
+  white-space: pre-wrap;
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 14px;
+  color: #cdd6f4;
+}
+/* Quiz answer box (Python / C++ / C#) */
+#quizArea { margin: 12px 0; }
+#quizLabel { display: block; font-size: 13px; color: #9399b2; margin-bottom: 6px; }
+#quizAnswer {
+  width: 100%;
+  padding: 11px;
+  background: #11111b;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  color: #cdd6f4;
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 14px;
+}
+#quizAnswer:focus { outline: 2px solid #89dceb; }
+
+/* Live preview (HTML / CSS / App-making) */
+#previewLabel { font-size: 13px; color: #9399b2; margin-top: 8px; }
+#preview {
+  width: 100%;
+  height: 380px;
+  background: #fff;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  margin: 4px 0;
+}
+#codeboard { min-height: 200px; }
+
+#result { font-weight: bold; padding: 10px 0; }
+#result.pass { color: #a6e3a1; }
+#result.fail { color: #f38ba8; }
+
+#nav { display: flex; justify-content: space-between; margin-top: 30px; }

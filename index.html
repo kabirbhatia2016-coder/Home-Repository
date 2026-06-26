@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="learn.css?v=10">
+  <title>Code Learner</title>
+</head>
+<body>
+
+  <div id="loginScreen">
+    <div class="login-card">
+      <h1>🚀 Code Learner</h1>
+      <p>Log in to save your progress</p>
+      <input id="username" placeholder="Username" autocomplete="off">
+      <input id="password" type="password" placeholder="Password">
+      <div class="login-buttons">
+        <button id="loginBtn">Log In</button>
+        <button id="signupBtn">Sign Up</button>
+      </div>
+      <div id="loginMsg"></div>
+    </div>
+  </div>
+
+  <div id="app" style="display:none">
+    <aside id="sidebar">
+      <h1>JS Learner</h1>
+      <div id="userBar">
+        <span id="userLabel"></span>
+        <button id="logoutBtn">Log out</button>
+      </div>
+
+      <div id="modeTabs">
+        <button id="learnTab" class="mode-tab active">📚 Learn</button>
+        <button id="tutorialTab" class="mode-tab">📖 Tutorial</button>
+        <button id="buildTab" class="mode-tab">🔨 Build</button>
+      </div>
+
+      <div id="learnSidebar">
+        <div id="courseTabs"></div>
+        <ol id="lessonList"></ol>
+        <div id="progress"></div>
+      </div>
+
+      <div id="buildSidebar" style="display:none">
+        <p class="sidebar-note">Your saved projects:</p>
+        <ol id="projListSidebar"></ol>
+        <button id="newProjBtn">＋ New project</button>
+      </div>
+
+      <div id="tutSidebar" style="display:none">
+        <p class="sidebar-note">Pick a tutorial:</p>
+        <div id="tutPicker"></div>
+        <p class="sidebar-note" id="tutStepsLabel">Steps:</p>
+        <ol id="tutStepList"></ol>
+      </div>
+    </aside>
+
+    <main id="content">
+     <div id="learnView">
+      <h2 id="lessonTitle"></h2>
+      <div id="lessonBody"></div>
+
+      <div id="exerciseBox">
+        <h3>🎯 Exercise</h3>
+        <p id="exercisePrompt"></p>
+
+        <textarea id="codeboard" spellcheck="false"></textarea>
+
+        <div id="buttons">
+          <button id="runBtn">▶ Run</button>
+          <button id="resetBtn">↺ Reset</button>
+          <button id="solutionBtn">💡 Show solution</button>
+        </div>
+
+        <div id="quizArea">
+          <label id="quizLabel" for="quizAnswer">Type what this code prints:</label>
+          <input id="quizAnswer" placeholder="your answer..." autocomplete="off" spellcheck="false">
+        </div>
+
+        <div id="outputLabel">Output:</div>
+        <pre id="output"></pre>
+
+        <div id="previewLabel">Live preview:</div>
+        <iframe id="preview" title="preview"></iframe>
+
+        <div id="result"></div>
+      </div>
+
+      <div id="nav">
+        <button id="prevBtn">← Previous</button>
+        <button id="nextBtn">Next →</button>
+      </div>
+     </div><!-- /learnView -->
+
+     <div id="builderView" style="display:none">
+       <div id="builderBar">
+         <input id="projName" placeholder="Project name" autocomplete="off">
+         <button id="saveProjBtn">💾 Save</button>
+         <span id="saveMsg"></span>
+       </div>
+
+       <div id="editorTabs">
+         <button class="ed-tab active" data-ed="html">HTML</button>
+         <button class="ed-tab" data-ed="css">CSS</button>
+         <button class="ed-tab" data-ed="js">JS</button>
+       </div>
+
+       <textarea id="builderEditor" spellcheck="false"></textarea>
+
+       <div id="builderButtons">
+         <button id="runProjBtn">▶ Run</button>
+       </div>
+
+       <div id="builderPreviewLabel">Live preview:</div>
+       <iframe id="builderPreview" title="your project"></iframe>
+     </div><!-- /builderView -->
+
+     <div id="tutorialView" style="display:none">
+       <div id="tutSplit">
+         <div id="tutLeft">
+           <div id="tutProgress"></div>
+           <h2 id="tutTitle"></h2>
+           <div id="tutInstruction"></div>
+           <div id="tutCodeLabel">📋 The code for this step:</div>
+           <pre id="tutCode"></pre>
+           <button id="tutInsert">➕ Put this code in my editor</button>
+           <div id="tutNav">
+             <button id="tutBack">← Back</button>
+             <button id="tutNext">Next →</button>
+           </div>
+         </div>
+         <div id="tutRight">
+           <div class="tut-editor-label">✏️ Your code (type here or use the button):</div>
+           <textarea id="tutEditor" spellcheck="false"></textarea>
+           <button id="tutRun">▶ Run it!</button>
+           <div class="tut-editor-label">▶️ Live preview:</div>
+           <iframe id="tutPreview" title="your chat app"></iframe>
+         </div>
+       </div>
+     </div><!-- /tutorialView -->
+    </main>
+  </div>
+
+  <script src="learn.js?v=10"></script>
+</body>
+</html>
